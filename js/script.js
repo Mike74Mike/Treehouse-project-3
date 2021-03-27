@@ -16,7 +16,7 @@ const checkboxes = document.querySelectorAll('#activities input');
 const creditCard = document.querySelector('#cc-num');
 const zipCode = document.querySelector('#zip');
 const cvv = document.querySelector('#cvv');
-
+const checkbox = document.querySelectorAll('input[type="checkbox"]');
 
 /**
 *@function focusName
@@ -138,14 +138,39 @@ function paymentInfo() {
       paypal.hidden =true;
     } if(bitcoin.id === e.target.value || paypal.id === e.target.value ){
       creditCardBox.style.display = 'none';
+      document.querySelector('#credit-card').style.display='none'
     } else{
       creditCardBox.style.display ='flex'
+      document.querySelector('#credit-card').style.display='block'
+
     }
   })
 }
 paymentInfo();
 //calling paymentInfo
 
+
+/**
+*@function checkboxFocus
+*@description - when a checkbox is clicked the parent of the checkbox will be given
+*               the 'focus' class name
+*/
+function checkboxFocus(){
+  const checkbox = document.querySelectorAll('input[type="checkbox"]');
+
+  for(let i = 0; i < checkbox.length; i++){
+
+    checkbox[i].addEventListener('focus', () =>{
+      checkbox[i].parentNode.classList.add('focus')
+
+    })
+    checkbox[i].addEventListener('blur' , ()=>{
+      checkbox[i].parentNode.classList.remove('focus')
+    })
+  }
+}
+checkboxFocus()
+//calling checkboxFocus
 /**
 *@function formValidator
 *@description - this function stops the form from being submitted when required
@@ -178,20 +203,50 @@ function formValidator(){
     const cvvIsValid = /^\d{3}$/.test(cvvValue);
     return cvvIsValid;
   }
-
+  function checkedBox(){
+    if(checkboxes[0].checked || checkboxes[1].checked|| checkboxes[2].checked
+    ||checkboxes[3].checked || checkboxes[4].checked|| checkboxes[5].checked
+    || checkboxes[6].checked ){
+      activities.classList.add('valid');
+      activities.classList.remove('not-valid');
+      activities.lastElementChild.stlye.display = 'flex'
+     return true
+    }else {
+      activities.classList.add('not-valid');
+      activities.classList.remove('valid');
+      activities.lastElementChild.style.display = 'none'
+      return false;
+    }
+  }
   form.addEventListener('submit', e=>{
 
     if(!nameValidator()){
       e.preventDefault()
     }else if(!emailValidator()){
       e.preventDefault()
-    } else if(!creditCardValidator()){
-      e.preventDefault()
-    }else if(!zipCodeValidator()){
-      e.preventDefault();
-    }else if(!cvvValidator()){
-      e.preventDefault()
+    } if(select.value ==='creditCard'){
+        if(!creditCardValidator()){
+          e.preventDefault()
+        }
+      }
+  if(select.value === 'credit-card'){
+      if(!zipCodeValidator()){
+        e.preventDefault();
+      }
     }
+   if(select.value ==='credit-card'){
+     if(!cvvValidator()){
+       e.preventDefault()
+    }
+} if(!checkedBox()){
+  e.preventDefault()
+}
+
+
+
+
+
+
 
     if(!nameValidator()){
       name.classList.add('not-valid');
@@ -234,29 +289,9 @@ function formValidator(){
       cvv.classList.remove('not-valid');
       cvv.parentNode.lastElementChild.style.display = 'none'
     }
+
+
   })
 }
 formValidator()
 //calling formValidator
-
-/**
-*@function checkboxFocus
-*@description - when a checkbox is clicked the parent of the checkbox will be given
-*               the 'focus' class name
-*/
-function checkboxFocus(){
-  const checkbox = document.querySelectorAll('input[type="checkbox"]');
-
-  for(let i = 0; i < checkboxes.length; i++){
-
-    checkbox[i].addEventListener('click', () =>{
-      if(checkbox[i].checked){
-      checkbox[i].parentNode.classList.add('focus')
-    } else{
-      checkbox[i].parentNode.classList.remove('focus')
-    }
-    })
-  }
-}
-checkboxFocus()
-//calling checkboxFocus
