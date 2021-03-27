@@ -249,44 +249,44 @@ function formValidator(){
 
 
     if(!nameValidator()){
-      name.classList.add('not-valid');
-      name.classList.remove('valid');
+      name.parentNode.classList.add('not-valid');
+      name.parentNode.classList.remove('valid');
       name.parentNode.lastElementChild.style.display = 'block';
     } else if(nameValidator()){
-      name.classList.add('valid');
-      name.classList.remove('not-valid');
+      name.parentNode.classList.add('valid');
+      name.parentNode.classList.remove('not-valid');
       name.parentNode.lastElementChild.style.display = 'none';
     } if(!emailValidator()){
-      email.classList.add('not-valid');
-      email.classList.remove('valid');
+      email.parentNode.classList.add('not-valid');
+      email.parentNode.classList.remove('valid');
       email.parentNode.lastElementChild.style.display = 'block';
     } else if(emailValidator()){
-      email.classList.add('valid');
-      email.classList.remove('not-valid');
+      email.parentNode.classList.add('valid');
+      email.parentNode.classList.remove('not-valid');
       email.parentNode.lastElementChild.style.display = 'none';
     }  if(!creditCardValidator()) {
-      creditCard.classList.add('not-valid');
-      creditCard.classList.remove('valid');
+      creditCard.parentNode.classList.add('not-valid');
+      creditCard.parentNode.classList.remove('valid');
       creditCard.parentNode.lastElementChild.style.display ='block'
     } else if(creditCardValidator()) {
-      creditCard.classList.add('valid');
-      creditCard.classList.remove('not-valid');
+      creditCard.parentNode.classList.add('valid');
+      creditCard.parentNode.classList.remove('not-valid');
       creditCard.parentNode.lastElementChild.style.display = 'none';
     }  if(!zipCodeValidator()) {
-      zipCode.classList.add('not-valid');
-      zipCode.classList.remove('valid');
+      zipCode.parentNode.classList.add('not-valid');
+      zipCode.parentNode.classList.remove('valid');
       zipCode.parentNode.lastElementChild.style.display = 'block';
     } else if(zipCodeValidator()) {
-      zipCode.classList.add('valid');
-      zipCode.classList.remove('not-valid');
+      zipCode.parentNode.classList.add('valid');
+      zipCode.parentNode.classList.remove('not-valid');
       zipCode.parentNode.lastElementChild.style.display = 'none'
     }  if(!cvvValidator()) {
-      cvv.classList.add('not-valid');
-      cvv.classList.remove('valid');
+      cvv.parentNode.classList.add('not-valid');
+      cvv.parentNode.classList.remove('valid');
       cvv.parentNode.lastElementChild.style.display = 'block'
     } else if(cvvValidator()){
-      cvv.classList.add('valid');
-      cvv.classList.remove('not-valid');
+      cvv.parentNode.classList.add('valid');
+      cvv.parentNode.classList.remove('not-valid');
       cvv.parentNode.lastElementChild.style.display = 'none'
     }
 
