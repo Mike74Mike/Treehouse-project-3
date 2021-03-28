@@ -190,7 +190,7 @@ function formValidator(){
   }
   function creditCardValidator() {
     const creditCardValue = creditCard.value;
-    const creditCardIsValid = /^\D*(\d{4})\D*(\d{4})\D*(\d{4})\D*(\d{4})\D*$/.test(creditCardValue);
+    const creditCardIsValid = /^\D*(\d{4})\D*\d{4}\D*\d{4}\D*(\d{1}?)?\D*\d{1}\D*(\d{1}?)?\D*(\d{1}?)?\D*$/.test(creditCardValue);
     return creditCardIsValid;
 }
   function zipCodeValidator(){
@@ -209,12 +209,12 @@ function formValidator(){
     || checkboxes[6].checked ){
       activities.classList.add('valid');
       activities.classList.remove('not-valid');
-      activities.lastElementChild.stlye.display = 'flex'
+      activities.lastElementChild.style.display = 'none'
      return true
     }else {
       activities.classList.add('not-valid');
       activities.classList.remove('valid');
-      activities.lastElementChild.style.display = 'none'
+      activities.lastElementChild.style.display = 'flex';
       return false;
     }
   }
